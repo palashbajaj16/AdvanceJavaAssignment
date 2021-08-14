@@ -1,7 +1,6 @@
 package com.advancejava.model;
 
 public class Party {
-	private int party_id;
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -10,10 +9,11 @@ public class Party {
 	private String state;
 	private String country;
 	private String phone;
-	public Party(int party_id, String firstName, String lastName, String address, String city, String zip, String state,
+	public Party() {
+	}
+	
+	public Party(String firstName, String lastName, String address, String city, String zip, String state,
 			String country, String phone) {
-		super();
-		this.party_id = party_id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
@@ -22,12 +22,6 @@ public class Party {
 		this.state = state;
 		this.country = country;
 		this.phone = phone;
-	}
-	public int getParty_id() {
-		return party_id;
-	}
-	public void setParty_id(int party_id) {
-		this.party_id = party_id;
 	}
 	public String getFirstName() {
 		return firstName;

@@ -13,6 +13,8 @@ public class Login{
 	public String getUserEmail() {
 		return userEmail;
 	}
+	public Login() {
+	}
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}

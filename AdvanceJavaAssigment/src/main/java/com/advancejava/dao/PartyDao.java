@@ -16,7 +16,6 @@ public class PartyDao {
 	    	con = GetConnection.getConnection();
 		    String sql = "insert into party_tbl(id, firstName, lastName, address, city, zip, state, country, phone)values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		    PreparedStatement ps = con.prepareStatement(sql);
-	        ps.setInt(1,party.getParty_id());
 	        ps.setString(2, party.getFirstName());
 	        ps.setString(3, party.getLastName());
 	        ps.setString(4, party.getAddress());
