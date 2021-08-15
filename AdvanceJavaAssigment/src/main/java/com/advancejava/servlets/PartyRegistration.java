@@ -43,9 +43,10 @@ public class PartyRegistration extends HttpServlet {
 		reg.setUserEmail(emailAddress);
 		reg.setPassword(password);
 		
-		PartyRegistrationDao.saveParty(reg);
-		
-		
+		boolean res = PartyRegistrationDao.saveParty(reg);
+		if (res) {
+			response.sendRedirect("login.html");
+		}		
 	}
 
 }

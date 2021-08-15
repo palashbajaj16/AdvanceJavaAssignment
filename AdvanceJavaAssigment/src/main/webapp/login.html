@@ -10,8 +10,8 @@
 <body>
 	<div class="container-fluid top-bar">
 	<div class="mnu">
-	 <a href="#">logIn</a>
-	 <a href="#">SignUp</a>
+	 <a href="login.html">logIn</a>
+	 <a href="registration.html">SignUp</a>
 	</div> 	    
     </div>
     <div class="container">
@@ -21,8 +21,9 @@
                 <div class="row">
                  <div class="col-lg-8 mt-5">  
                  <form action="PartyLogin" method="post">   
-                	<input type="email" class="form-control" name="emailAddress" placeholder="Enter Your EmailID"><br> 
-                	<input type="password" class="form-control" name="password" id="login_password" placeholder="Enter Your Password"><br>
+                	<input type="email" class="form-control" name="emailAddress" placeholder="Enter Your EmailID" required="required"><br> 
+                	<input type="password" class="form-control" name="password" id="login_password" placeholder="Enter Your Password" required="required"><br>
+                	<small id="demo" class="abc"></small>
                 	<input type="submit" id="demo" class="form-control" value="click"><br>
                 </form> 
                 </div>                   	             	

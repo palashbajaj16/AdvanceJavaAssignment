@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.advancejava.dao.PartyLoginDao;
 import com.advancejava.service.GetConnection;
 import com.mysql.jdbc.Connection;
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
 
 @WebServlet("/PartyLogin")
@@ -25,7 +24,7 @@ public class PartyLogin extends HttpServlet {
 		
 		Boolean q = PartyLoginDao.Check(emailAddress, password);
 		if (q) {
-			response.sendRedirect("welcome.html");
+			response.sendRedirect("display.jsp");
 		}
 		else {
 			response.sendRedirect("login.html");
