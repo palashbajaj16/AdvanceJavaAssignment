@@ -4,17 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.advancejava.model.*;
+import com.advancejava.model.Registration;
 import com.advancejava.service.GetConnection;
 
-public class PartyRegistrationDao {
-
-	public static boolean saveParty(Registration reg) {
+public class EditDao {
+	public static boolean updateParty(Registration reg)
+	{
 		Connection con;
 	    boolean status = false;	    
 	    try {
 	    	con = GetConnection.getConnection();
-		    String sql = "insert into reg_tbl(fname, lname, address, city, state, country, zip, phone, userloginid, password)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		    String sql = "UPDATE reg_tbl SET fname = ?, lname = ?, address = ?, city = ?, state = ?, country = ?, zip = ?, phone = ?, userloginid = ?, password = ? WHERE partyId = ?";
 		    PreparedStatement ps = con.prepareStatement(sql);
 	        ps.setString(1, reg.getFirstName());
 	        ps.setString(2, reg.getLastName());
@@ -26,14 +26,12 @@ public class PartyRegistrationDao {
 	        ps.setString(8, reg.getPhone());
 	        ps.setString(9, reg.getUserEmail());
 	        ps.setString(10, reg.getPassword());
+	        ps.setInt(11, reg.getPartyID());
 	        if(ps.executeUpdate()!=0)
-	        {
-	        	status = true;
-	        }		           
+	           status = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return status;
-	}		
+		return true;
+	}
 }
-	

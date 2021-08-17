@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.advancejava.dao.PartyLoginDao;
 import com.advancejava.service.GetConnection;
@@ -22,12 +23,14 @@ public class PartyLogin extends HttpServlet {
 		String emailAddress = request.getParameter("emailAddress");
 		String password = request.getParameter("password");
 		
-		Boolean q = PartyLoginDao.Check(emailAddress, password);
-		if (q) {
-			response.sendRedirect("display.jsp");
+		Boolean res = PartyLoginDao.Check(emailAddress, password);
+		if (res) {
+			HttpSession session = request.getSession();  
+			session.setAttribute("uid",emailAddress);  
+			response.sendRedirect("display");
 		}
 		else {
-			response.sendRedirect("login.html");
+			response.sendRedirect("login");
 		}
 	}		
 }

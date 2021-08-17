@@ -16,7 +16,7 @@ public class GetConnection {
 		}
 		else
 		{
-			System.out.println("Connection successful"+con);
+			System.out.println("Connection successful");
 		}
     }
     catch(Exception e)

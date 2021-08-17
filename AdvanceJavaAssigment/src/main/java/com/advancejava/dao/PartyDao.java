@@ -14,22 +14,23 @@ public class PartyDao {
 	    boolean status = false;	    
 	    try {
 	    	con = GetConnection.getConnection();
-		    String sql = "insert into party_tbl(id, firstName, lastName, address, city, zip, state, country, phone)values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		    String sql = "insert into party_tbl(firstName, lastName, address, city, zip, state, country, phone)values(?, ?, ?, ?, ?, ?, ?, ?)";
 		    PreparedStatement ps = con.prepareStatement(sql);
-	        ps.setString(2, party.getFirstName());
-	        ps.setString(3, party.getLastName());
-	        ps.setString(4, party.getAddress());
-	        ps.setString(5, party.getCity());
-	        ps.setString(6, party.getZip());
-	        ps.setString(7, party.getState());
-	        ps.setString(8, party.getCountry());
-	        ps.setString(9, party.getPhone());
+	        ps.setString(1, party.getFirstName());
+	        ps.setString(2, party.getLastName());
+	        ps.setString(3, party.getAddress());
+	        ps.setString(4, party.getCity());
+	        ps.setString(5, party.getZip());
+	        ps.setString(6, party.getState());
+	        ps.setString(7, party.getCountry());
+	        ps.setString(8, party.getPhone());
 	        if(ps.executeUpdate()!=0)
-	           status = true;
-	        System.out.println(ps);
+	        {
+	        	status = true;
+	        }
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return true;
+		return status;
 	}
 }

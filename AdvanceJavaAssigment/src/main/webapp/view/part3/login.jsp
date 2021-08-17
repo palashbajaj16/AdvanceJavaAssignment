@@ -10,10 +10,19 @@
 <body>
 	<div class="container-fluid top-bar">
 	<div class="mnu">
-	 <a href="login.html">logIn</a>
-	 <a href="registration.html">SignUp</a>
+	 <a href="login">logIn</a>
+	 <a href="registration">SignUp</a>
+	 <a href="index.html">Home</a>
 	</div> 	    
     </div>
+    <%
+    String val =(String)session.getAttribute("uid"); 
+    if(val!=null)
+    {
+    	RequestDispatcher rd = request.getRequestDispatcher("display");
+		rd.forward(request, response);
+    }
+    %>
     <div class="container">
             <div class="col-lg-9 mx-auto">
                 <div class="block-div mt-5 mx-auto">

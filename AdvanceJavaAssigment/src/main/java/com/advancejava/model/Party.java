@@ -9,6 +9,8 @@ public class Party {
 	private String state;
 	private String country;
 	private String phone;
+	
+	
 	public Party() {
 	}
 	
@@ -23,6 +25,8 @@ public class Party {
 		this.country = country;
 		this.phone = phone;
 	}
+	
+	
 	public String getFirstName() {
 		return firstName;
 	}

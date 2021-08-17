@@ -7,7 +7,10 @@
 <link rel="stylesheet" href="css/root.css">
 </head>
 <body>
-	<div class="container-fluid top-bar">        
+	<div class="container-fluid top-bar"> 
+	<div class="mnu">
+	 <a href="index.html">Home</a>
+	</div>          
     </div>
     <div class="container">
             <div class="col-lg-9 mx-auto">
@@ -38,7 +41,7 @@
                           <tr>
                             <th scope="row"></th>
                             <td colspan="3">JSP Page</td>
-                            <td><button type="button" class="btn btn-light"><a href="task1demo.jsp">JSP Page</a></button></td>
+                            <td><button type="button" class="btn btn-light"><a href="task1demo">JSP Page</a></button></td>
                           </tr>
                         </tbody>
                       </table>

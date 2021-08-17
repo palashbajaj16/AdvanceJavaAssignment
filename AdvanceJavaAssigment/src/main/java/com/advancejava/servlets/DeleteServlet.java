@@ -14,18 +14,17 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
 @WebServlet("/Delete")
-public class Delete extends HttpServlet {
+public class DeleteServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			int prm =  Integer.parseInt(request.getParameter("prm"));
 			Connection con = (Connection) GetConnection.getConnection();
 			Statement st = (Statement) con.createStatement();
-			System.out.println(prm);
 			String sql = "delete from reg_tbl where partyId='"+prm+"'";			    
 		    st.executeUpdate(sql);
-		    response.sendRedirect("display.jsp");
+		    response.sendRedirect("display");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    

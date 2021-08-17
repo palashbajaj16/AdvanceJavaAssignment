@@ -6,18 +6,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.advancejava.dao.PartyRegistrationDao;
-import com.advancejava.model.Login;
-import com.advancejava.model.Party;
+import com.advancejava.dao.EditDao;
 import com.advancejava.model.Registration;
-import com.advancejava.service.GetConnection;
 
-@WebServlet("/PartyRegistration")
-public class PartyRegistration extends HttpServlet {
+@WebServlet("/Edit")
+public class EditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int partyID = Integer.parseInt(request.getParameter("prm"));
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String address = request.getParameter("address");
@@ -29,8 +27,8 @@ public class PartyRegistration extends HttpServlet {
 		String emailAddress = request.getParameter("emailAddress");
 		String password = request.getParameter("password");
 		
-		
 		Registration reg = new Registration();
+		reg.setPartyID(partyID);
 		reg.setFirstName(firstName);
 		reg.setLastName(lastName);
 		reg.setAddress(address);
@@ -42,10 +40,10 @@ public class PartyRegistration extends HttpServlet {
 		reg.setUserEmail(emailAddress);
 		reg.setPassword(password);
 		
-		boolean res = PartyRegistrationDao.saveParty(reg);
+		boolean res = EditDao.updateParty(reg);
 		if (res) {
-			response.sendRedirect("login");
-		}		
+			response.sendRedirect("display");
+		}	
 	}
 
 }

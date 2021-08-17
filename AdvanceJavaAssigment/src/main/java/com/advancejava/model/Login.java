@@ -4,8 +4,8 @@ public class Login{
 	private String userEmail;
 	private String password;
 	private int partyId;
+	
 	public Login(String userEmail, String password, int partyId) {
-		super();
 		this.userEmail = userEmail;
 		this.password = password;
 		this.partyId = partyId;

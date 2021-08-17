@@ -20,21 +20,6 @@ public class GenericServletDemo extends GenericServlet {
 		res.setContentType("text/html");
 		PrintWriter out = res.getWriter();
 		System.out.println("Servic is call");	
-		out.println("Hello World");
-		
-		   Connection con = null;
-		  {
-		    try
-		    {
-		      Class.forName("com.mysql.jdbc.Driver");
-		      con = DriverManager.getConnection("jdbc:mysql://localhost:3306/election","root","root");
-		      System.out.println(con);
-		    }
-		    catch(Exception e)
-		    {
-		      e.printStackTrace();
-		    }
-		    
-		  }
+		out.println("Hello World");		    
 	}
 }

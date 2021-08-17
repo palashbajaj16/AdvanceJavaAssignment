@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>success</title>
 </head>
 <body>
 	<h3>Party reguster success</h3>

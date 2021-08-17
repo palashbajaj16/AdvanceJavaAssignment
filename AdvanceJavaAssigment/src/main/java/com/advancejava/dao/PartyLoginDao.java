@@ -12,7 +12,6 @@ public class PartyLoginDao {
 		Connection con;
 	    boolean status = false;	    
 	    try {
-	    	System.out.println();
 	    	con = (Connection) GetConnection.getConnection();
 		    String sql = "select userloginid,password from reg_tbl where userloginid=? and password=?";	
 		    PreparedStatement ps = con.prepareStatement(sql);
@@ -25,4 +24,5 @@ public class PartyLoginDao {
 		}
 		return status;
 	}
-	}
+}
+
