@@ -23,7 +23,6 @@ public class GetConnection {
     {
       e.printStackTrace();
     }
-    System.out.println(con);
     return con;
   }
 }

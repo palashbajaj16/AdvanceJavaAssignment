@@ -13,6 +13,7 @@ import com.advancejava.model.Login;
 import com.advancejava.model.Party;
 import com.advancejava.model.Registration;
 import com.advancejava.service.GetConnection;
+import com.mysql.jdbc.Connection;
 
 @WebServlet("/PartyRegistration")
 public class PartyRegistration extends HttpServlet {

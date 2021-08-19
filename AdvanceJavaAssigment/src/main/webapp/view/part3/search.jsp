@@ -75,6 +75,8 @@
             </tr>        
 		 	<%
 		 	}
+		    rs.close();
+		    con.close();
 		 }
 			catch (Exception e) 
 		{

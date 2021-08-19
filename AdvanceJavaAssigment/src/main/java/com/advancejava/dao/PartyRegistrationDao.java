@@ -29,6 +29,8 @@ public class PartyRegistrationDao {
 	        if(ps.executeUpdate()!=0)
 	        {
 	        	status = true;
+	        	ps.close();
+	        	con.close();
 	        }		           
 		} catch (SQLException e) {
 			e.printStackTrace();

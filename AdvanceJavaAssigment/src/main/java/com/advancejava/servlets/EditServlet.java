@@ -1,6 +1,8 @@
 package com.advancejava.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,10 +42,16 @@ public class EditServlet extends HttpServlet {
 		reg.setUserEmail(emailAddress);
 		reg.setPassword(password);
 		
-		boolean res = EditDao.updateParty(reg);
-		if (res) {
-			response.sendRedirect("display");
-		}	
+		boolean res;
+		try {
+			res = EditDao.updateParty(reg);
+			if (res) {
+				response.sendRedirect("display");
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

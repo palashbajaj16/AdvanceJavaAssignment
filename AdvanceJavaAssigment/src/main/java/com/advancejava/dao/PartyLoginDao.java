@@ -19,6 +19,7 @@ public class PartyLoginDao {
 		    ps.setString(2, pass);
 		    ResultSet rs = ps.executeQuery();
 		    status = rs.next();
+		    con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

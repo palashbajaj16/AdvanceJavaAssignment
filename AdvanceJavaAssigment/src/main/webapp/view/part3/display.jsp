@@ -1,5 +1,6 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.Out"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page errorPage="error.jsp" %>
 <%@ page import="com.advancejava.service.*" %> 
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
@@ -72,7 +73,10 @@
             </tr>        
 		 	<%
 		 	}
+		    rs.close();
+		    con.close();
 		 }
+	     
 			catch (Exception e) 
 		{
 			e.printStackTrace();

@@ -21,6 +21,7 @@ public class LoginDao {
 	        if(ps.executeUpdate()!=0)
 	        {
 	        	status = true;
+	        	con.close();
 	        }
 	    }
 	    catch (SQLException e) 

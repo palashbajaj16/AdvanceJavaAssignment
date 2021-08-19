@@ -8,7 +8,7 @@ import com.advancejava.model.Registration;
 import com.advancejava.service.GetConnection;
 
 public class EditDao {
-	public static boolean updateParty(Registration reg)
+	public static boolean updateParty(Registration reg) throws SQLException
 	{
 		Connection con;
 	    boolean status = false;	    
@@ -28,8 +28,12 @@ public class EditDao {
 	        ps.setString(10, reg.getPassword());
 	        ps.setInt(11, reg.getPartyID());
 	        if(ps.executeUpdate()!=0)
+	        {	           
 	           status = true;
-		} catch (SQLException e) {
+	           con.close();
+	        }
+	    }
+	        catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return true;

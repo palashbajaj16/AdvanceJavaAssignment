@@ -23,6 +23,7 @@ public class DeleteServlet extends HttpServlet {
 			Statement st = (Statement) con.createStatement();
 			String sql = "delete from reg_tbl where partyId='"+prm+"'";			    
 		    st.executeUpdate(sql);
+		    con.close();
 		    response.sendRedirect("display");
 		} catch (SQLException e) {
 			e.printStackTrace();
