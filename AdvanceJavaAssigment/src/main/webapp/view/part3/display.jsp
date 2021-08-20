@@ -1,7 +1,9 @@
+<%@page import="java.sql.SQLException"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.Out"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page errorPage="error.jsp" %>
 <%@ page import="com.advancejava.service.*" %> 
+<%@page import="java.io.IOException"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -42,16 +44,17 @@
 	            <td>Phone</td>
 	            <td>UserLoginID</td>
 	            <td>Password</td>
-				</tr>                                  
-		
-	   <%try
-		{
-			Connection con = GetConnection.getConnection();
+				</tr>                                  		
+	<%
+	   Connection con = GetConnection.getConnection();
+	   try
+		{			
 			Statement st = con.createStatement();
 		    String sql = "select * from reg_tbl";			    
 		    ResultSet rs = st.executeQuery(sql);
 		    while(rs.next())
-		    {%>
+		    {
+	%>
 			<tr>			
 			<td><%= rs.getString(1) %></td>
             <td><%= rs.getString(2) %></td>
@@ -71,17 +74,26 @@
             	<a href="Delete?prm=<%= rs.getString(1) %>" class="btn btn-danger">Delete</a>
             </td>
             </tr>        
-		 	<%
-		 	}
-		    rs.close();
-		    con.close();
-		 }
-	     
-			catch (Exception e) 
-		{
-			e.printStackTrace();
+	<%
+		   }
+		   	rs.close();
 		}
-		 %>
+	   catch (SQLException e) 
+	   {
+	    	e.printStackTrace();
+	   }
+	   finally 
+	   {
+	    	try 
+	    	{
+				con.close();
+			} 
+	    	catch (SQLException e) 
+	    	{
+				e.printStackTrace();
+			}
+		}
+	%>
 		 </tbody>
 		 </table>  
          </div>	

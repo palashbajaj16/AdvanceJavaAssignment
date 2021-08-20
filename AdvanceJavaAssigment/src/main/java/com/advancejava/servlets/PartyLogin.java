@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,10 +28,12 @@ public class PartyLogin extends HttpServlet {
 		if (res) {
 			HttpSession session = request.getSession();  
 			session.setAttribute("uid",emailAddress);  
-			response.sendRedirect("display");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("display");
+			requestDispatcher.forward(request, response);
 		}
 		else {
-			response.sendRedirect("login");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("login");
+			requestDispatcher.forward(request, response);
 		}
 	}		
 }

@@ -10,18 +10,35 @@ public class PartyLoginDao {
 	public static boolean Check(String email, String pass)
 	{
 		Connection con;
-	    boolean status = false;	    
-	    try {
-	    	con = (Connection) GetConnection.getConnection();
+	    boolean status = false;	   
+	    con = (Connection) GetConnection.getConnection();
+	    try 
+	    {
 		    String sql = "select userloginid,password from reg_tbl where userloginid=? and password=?";	
 		    PreparedStatement ps = con.prepareStatement(sql);
 		    ps.setString(1, email);
 		    ps.setString(2, pass);
 		    ResultSet rs = ps.executeQuery();
 		    status = rs.next();
-		    con.close();
-		} catch (SQLException e) {
+		    ps.close();
+		} 
+	    catch (SQLException e) 
+	    {
 			e.printStackTrace();
+		}
+	    
+	    //if the connection is not open close function shows exception
+	    
+	    finally 
+	    {
+	    	try 
+	    	{
+				con.close();
+			} 
+	    	catch (SQLException e) 
+	    	{
+				e.printStackTrace();
+			}
 		}
 		return status;
 	}

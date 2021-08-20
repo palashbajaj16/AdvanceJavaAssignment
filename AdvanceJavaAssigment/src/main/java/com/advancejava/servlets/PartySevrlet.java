@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,8 +33,9 @@ public class PartySevrlet extends HttpServlet {
 		Party party = new Party(firstName, lastName, address, city, zip, state, country, phone);
 		PartyDao.saveParty(party);
 		Connection con; 
-	    try {
-	    	con = (Connection) GetConnection.getConnection();
+		con = (Connection) GetConnection.getConnection();
+	    try 
+	    {	    	
 		    String sql = "select * from reg_tbl where phone=?";	
 		    PreparedStatement ps = con.prepareStatement(sql);
 		    ResultSet rs = ps.executeQuery();
@@ -43,9 +45,23 @@ public class PartySevrlet extends HttpServlet {
 			String password = request.getParameter("password");
 			Login login = new Login(email, password,id);
 			LoginDao.saveLogin(login);
-		} catch (SQLException e) {
+		} 
+	    catch (SQLException e) 
+	    {
 			e.printStackTrace();
 		}
-	    response.sendRedirect("registration_success");		
+	    finally 
+	    {
+	    	try 
+	    	{
+				con.close();
+			} 
+	    	catch (SQLException e) 
+	    	{
+				e.printStackTrace();
+			}
+		}
+	    RequestDispatcher requestDispatcher = request.getRequestDispatcher("registration_success");
+		requestDispatcher.forward(request, response);		
 	}
 }

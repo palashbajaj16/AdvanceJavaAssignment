@@ -11,9 +11,10 @@ public class EditDao {
 	public static boolean updateParty(Registration reg) throws SQLException
 	{
 		Connection con;
-	    boolean status = false;	    
-	    try {
-	    	con = GetConnection.getConnection();
+	    boolean status = false;	
+	    con = GetConnection.getConnection();
+	    try 
+	    {
 		    String sql = "UPDATE reg_tbl SET fname = ?, lname = ?, address = ?, city = ?, state = ?, country = ?, zip = ?, phone = ?, userloginid = ?, password = ? WHERE partyId = ?";
 		    PreparedStatement ps = con.prepareStatement(sql);
 	        ps.setString(1, reg.getFirstName());
@@ -28,14 +29,29 @@ public class EditDao {
 	        ps.setString(10, reg.getPassword());
 	        ps.setInt(11, reg.getPartyID());
 	        if(ps.executeUpdate()!=0)
-	        {	           
-	           status = true;
-	           con.close();
+	        {
+	        	ps.close();
+	            status = true;
 	        }
 	    }
-	        catch (SQLException e) {
-			e.printStackTrace();
+	    catch (SQLException e) 
+	    {
+	    	e.printStackTrace();
 		}
-		return true;
+        
+	    //if the connection is not open close function shows exception	
+	    
+	    finally 
+	    {
+	    	try 
+	    	{
+				con.close();
+			} 
+	    	catch (SQLException e) 
+	    	{
+				e.printStackTrace();
+			}
+		}
+		return status;
 	}
 }

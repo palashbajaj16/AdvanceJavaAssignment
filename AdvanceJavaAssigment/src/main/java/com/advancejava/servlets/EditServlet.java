@@ -3,6 +3,7 @@ package com.advancejava.servlets;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +47,8 @@ public class EditServlet extends HttpServlet {
 		try {
 			res = EditDao.updateParty(reg);
 			if (res) {
-				response.sendRedirect("display");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("display");
+				requestDispatcher.forward(request, response);
 			}	
 		} catch (SQLException e) {
 			e.printStackTrace();

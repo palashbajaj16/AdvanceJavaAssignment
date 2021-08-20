@@ -1,3 +1,4 @@
+<%@page import="java.sql.SQLException"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.Out"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page errorPage="error.jsp" %>
@@ -27,15 +28,17 @@
             <div class="col-lg-9 mx-auto">
                 <div class="block-div mt-3 mx-auto">
                 <h5 class="text-center">Task 3 Edit</h5>
-	<%try
+	<%
+		Connection con = GetConnection.getConnection();
+		try
 		{
 			int prm =  Integer.parseInt(request.getParameter("prm"));
-			Connection con = GetConnection.getConnection();
 			Statement st = con.createStatement();
 		    String sql = "select * from reg_tbl where partyId='"+prm+"'";			    
 		    ResultSet rs = st.executeQuery(sql);
 		    while(rs.next())
-		    {%>	
+		    {
+	%>	
 		    <form action="Edit" method="post">		
 		    <div class="row">
                  <div class="col-lg-6">
@@ -60,16 +63,26 @@
                 	<input type="submit" class="form-control" value="click"><br>
              </div>
              </form>
-		 	<%
+	<%
 		 	}
 		    rs.close();
-		    con.close();
 		 }
-	catch (Exception e) 
+		catch (Exception e) 
 		{
 			e.printStackTrace();
 		}
-		 %>
+		finally 
+		{
+    		try 
+    		{
+			con.close();
+			} 
+    		catch (SQLException e) 
+    		{
+			e.printStackTrace();
+			}
+		}
+	%>
 </div>
             </div>
         </div>   

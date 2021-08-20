@@ -1,3 +1,4 @@
+<%@page import="java.sql.SQLException"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.Out"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page errorPage="error.jsp" %>
@@ -49,17 +50,18 @@
 	            <td>UserLoginID</td>
 	            <td>Password</td>
 				</tr>                                  
-		
-	   <%try
+	<%
+	   Connection con = GetConnection.getConnection();
+	   try
 		{
 			String fnm = request.getParameter("firstName");
 			String lnm = request.getParameter("lastName");
-			Connection con = GetConnection.getConnection();
 			Statement st = con.createStatement();
 		    String sql = "select * from reg_tbl where fname='"+fnm+"' and lname='"+lnm+"'";			    
 		    ResultSet rs = st.executeQuery(sql);
 		    while(rs.next())
-		    {%>
+		    {
+	%>
 			<tr>			
 			<td><%= rs.getString(1) %></td>
             <td><%= rs.getString(2) %></td>
@@ -73,15 +75,24 @@
             <td><%= rs.getString(10) %></td>
             <td><%= rs.getString(11) %></td>
             </tr>        
-		 	<%
+	<%
 		 	}
 		    rs.close();
-		    con.close();
-		 }
-			catch (Exception e) 
+		}
+		catch (Exception e) 
 		{
 			e.printStackTrace();
 		}
+	   finally 
+	   {
+	    	try 
+	    	{
+				con.close();
+			} 
+	    	catch (SQLException e) {
+				e.printStackTrace();
+			}
+	   }
 		 %>
 		 </tbody>
 		 </table>  

@@ -1,6 +1,8 @@
 package com.advancejava.servlets;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,7 +47,8 @@ public class PartyRegistration extends HttpServlet {
 		
 		boolean res = PartyRegistrationDao.saveParty(reg);
 		if (res) {
-			response.sendRedirect("login");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("login");
+			requestDispatcher.forward(request, response);
 		}		
 	}
 

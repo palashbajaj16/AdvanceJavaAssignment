@@ -11,9 +11,10 @@ public class PartyDao {
 	public static boolean saveParty(Party party)
 	{
 		Connection con;
-	    boolean status = false;	    
-	    try {
-	    	con = GetConnection.getConnection();
+	    boolean status = false;	  
+	    con = GetConnection.getConnection();
+	    try 
+	    {	    	
 		    String sql = "insert into party_tbl(firstName, lastName, address, city, zip, state, country, phone)values(?, ?, ?, ?, ?, ?, ?, ?)";
 		    PreparedStatement ps = con.prepareStatement(sql);
 	        ps.setString(1, party.getFirstName());
@@ -26,11 +27,27 @@ public class PartyDao {
 	        ps.setString(8, party.getPhone());
 	        if(ps.executeUpdate()!=0)
 	        {
-	        	status = true;
-	        	con.close();
+	        	ps.close();
+	        	status = true;	        	
 	        }
-		} catch (SQLException e) {
+		} 
+	    catch(SQLException e) 
+	    {
 			e.printStackTrace();
+		}
+	    
+	    //if the connection is not open close function shows exception
+	    
+	    finally 
+	    {
+	    	try 
+	    	{
+				con.close();
+			} 
+	    	catch (SQLException e) 
+	    	{
+				e.printStackTrace();
+			}
 		}
 		return status;
 	}

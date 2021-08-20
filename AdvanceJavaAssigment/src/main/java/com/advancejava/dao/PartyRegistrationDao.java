@@ -12,8 +12,9 @@ public class PartyRegistrationDao {
 	public static boolean saveParty(Registration reg) {
 		Connection con;
 	    boolean status = false;	    
-	    try {
-	    	con = GetConnection.getConnection();
+	    con = GetConnection.getConnection();
+	    try 
+	    {	    	
 		    String sql = "insert into reg_tbl(fname, lname, address, city, state, country, zip, phone, userloginid, password)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		    PreparedStatement ps = con.prepareStatement(sql);
 	        ps.setString(1, reg.getFirstName());
@@ -30,10 +31,25 @@ public class PartyRegistrationDao {
 	        {
 	        	status = true;
 	        	ps.close();
-	        	con.close();
 	        }		           
-		} catch (SQLException e) {
+		} 
+	    catch (SQLException e) 
+	    {
 			e.printStackTrace();
+		}
+	    
+	    //if the connection is not open close function shows exception
+	    
+	    finally 
+	    {
+	    	try 
+	    	{
+				con.close();
+			} 
+	    	catch (SQLException e) 
+	    	{
+				e.printStackTrace();
+			}
 		}
 		return status;
 	}		
