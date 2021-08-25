@@ -3,19 +3,15 @@ package com.advancejava.servlets;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import com.advancejava.dao.PartyRegistrationDao;
-import com.advancejava.model.Login;
-import com.advancejava.model.Party;
 import com.advancejava.model.Registration;
-import com.advancejava.service.GetConnection;
-import com.mysql.jdbc.Connection;
+import com.advancejava.service.MailUtil;
 
 @WebServlet("/PartyRegistration")
 public class PartyRegistration extends HttpServlet {
@@ -47,6 +43,7 @@ public class PartyRegistration extends HttpServlet {
 		
 		boolean res = PartyRegistrationDao.saveParty(reg);
 		if (res) {
+			MailUtil.sendMail(reg.getUserEmail());
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("login");
 			requestDispatcher.forward(request, response);
 		}		
