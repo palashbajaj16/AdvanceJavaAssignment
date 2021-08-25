@@ -20,8 +20,8 @@ public class MailUtil {
 		pro.put("mail.smtp.socketFactory.port", "465");
         pro.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		
-		String email = "palashbajaj001@gmail.com";
-		String password = "palash@3847";
+		String email = "xxxxxxx@gmail.com";
+		String password = "xxxxxx";
 		
 		Session session = Session.getInstance(pro, new Authenticator() {
 			@Override
