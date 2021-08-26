@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `party_tbl`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `party_tbl` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `partyID` int NOT NULL,
   `firstName` varchar(45) DEFAULT NULL,
   `lastName` varchar(45) DEFAULT NULL,
   `address` varchar(45) DEFAULT NULL,
@@ -32,9 +32,9 @@ CREATE TABLE `party_tbl` (
   `state` varchar(45) DEFAULT NULL,
   `country` varchar(45) DEFAULT NULL,
   `phone` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=123466 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`partyID`),
+  UNIQUE KEY `id_UNIQUE` (`partyID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `party_tbl` (
 
 LOCK TABLES `party_tbl` WRITE;
 /*!40000 ALTER TABLE `party_tbl` DISABLE KEYS */;
-INSERT INTO `party_tbl` VALUES (123462,'Palash','w','w','Khargone','sss','sss','aaa','sss'),(123463,'aaa','Bajaj','sss','Khargone','sss','aaa','aaa','sss'),(123464,'aaa','Bajaj','sss','Khargone','sss','aaa','aaa','sss'),(123465,'aaa','Bajaj','sss','Khargone','sss','aaa','aaa','sss');
+INSERT INTO `party_tbl` VALUES (1,'Palash','w','w','Khargone','sss','sss','aaa','sss'),(2,'Palash','Kale','moti pura','Khargone','451001','mp','India','01234567891');
 /*!40000 ALTER TABLE `party_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +67,7 @@ CREATE TABLE `reg_tbl` (
   `userloginid` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`partyId`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +76,7 @@ CREATE TABLE `reg_tbl` (
 
 LOCK TABLES `reg_tbl` WRITE;
 /*!40000 ALTER TABLE `reg_tbl` DISABLE KEYS */;
-INSERT INTO `reg_tbl` VALUES (1,'Palash','Bajaj','abcd','Khargone','sss','sss','sss','sss','sss@gmail.com','145');
+INSERT INTO `reg_tbl` VALUES (7,'Palash','Bajaj','sss','Khargone','aaa','sss','oooo','sss','sss@gmail.com','145'),(8,'Aakash','Kale','moti pura','Khargone','mp','india','451001','1234567891','aakash@gmail.com','aakash@123'),(10,'pranay','pandit','talai marg','Khargone','mp','India','451001','01234567892','pranay@gmail.com','123456'),(11,'Aakash','Kale','moti pura','Khargone','mp','India','451001','01234567891','palashbajaj3847@gmail.com','1234'),(12,'pranay','pandit','talai marg','Khargone','mp','India','451001','01234567892','palashbajaj3847@gmail.com','123456'),(13,'pranay','pandit','talai marg','Khargone','mp','India','451001','01234567892','palashbajaj3847@gmail.com','1234'),(14,'Aakash','Kale','moti pura','Khargone','mp','India','451001','01234567891','palashbajaj3847@gmail.com','1478'),(15,'Aakash','Kale','moti pura','Khargone','mp','India','451001','01234567891','palashbajaj3847@gmail.com','789456'),(16,'Aakash','Kale','moti pura','Khargone','mp','India','451001','01234567891','palashbajaj3847@gmail.com','745'),(17,'Aakash','Kale','moti pura','Khargone','mp','India','451001','01234567891','palashbajaj3847@gmail.com','852'),(18,'Aakash','Kale','moti pura','Khargone','mp','India','451001','01234567891','palashbajaj3847@gmail.com','8745'),(19,'pranay','pandit','talai marg','Khargone','mp','India','451001','01234567892','palashbajaj3847@gmail.com','789456');
 /*!40000 ALTER TABLE `reg_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,9 +91,11 @@ CREATE TABLE `user_login_tbl` (
   `sno` int NOT NULL AUTO_INCREMENT,
   `user_id` varchar(45) DEFAULT NULL,
   `user_pass` varchar(45) DEFAULT NULL,
-  `id` int DEFAULT NULL,
-  PRIMARY KEY (`sno`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `partyID` int DEFAULT NULL,
+  PRIMARY KEY (`sno`),
+  KEY `partyID_idx` (`partyID`),
+  CONSTRAINT `partyID` FOREIGN KEY (`partyID`) REFERENCES `party_tbl` (`partyID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,6 +104,7 @@ CREATE TABLE `user_login_tbl` (
 
 LOCK TABLES `user_login_tbl` WRITE;
 /*!40000 ALTER TABLE `user_login_tbl` DISABLE KEYS */;
+INSERT INTO `user_login_tbl` VALUES (1,'palashbajaj3847@gmail.com','789456',2);
 /*!40000 ALTER TABLE `user_login_tbl` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -114,4 +117,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-17 23:36:07
+-- Dump completed on 2021-08-26 17:11:53

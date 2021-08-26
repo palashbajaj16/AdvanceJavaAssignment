@@ -1,6 +1,7 @@
 package com.advancejava.model;
 
 public class Party {
+	private int partyId;
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -26,7 +27,12 @@ public class Party {
 		this.phone = phone;
 	}
 	
-	
+	public int getPartyId() {
+		return partyId;
+	}
+	public void setPartyId(int partyId) {
+		this.partyId = partyId;
+	}	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -74,5 +80,5 @@ public class Party {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}	
+	}
 }

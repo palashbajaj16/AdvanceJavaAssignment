@@ -24,18 +24,19 @@
                 <form action="PartySevrlet" method="post">
                 <div class="row">
                  <div class="col-lg-6">
-                	<input type="number" class="form-control" id="" name="partyId" placeholder="Enter Your PartyID" required="required"><br>
                 	<input type="text" class="form-control" id="" name="firstName" placeholder="Enter Your First Name" required="required"><br>
                 	<input type="text" class="form-control" id="" name="lastName" placeholder="Enter Your Last Name" required="required"><br>
                 	<input type="text" class="form-control" id="" name="address" placeholder="Enter Your Address" required="required"><br>
                 	<input type="text" class="form-control" id="" name="city" placeholder="Enter Your City" required="required"><br>
+                	<input type="text" class="form-control" id="" name="state" placeholder="Enter Your State" required="required"><br>
                 </div>
                 <div class="col-lg-6">
-                	<input type="text" class="form-control" id="" name="state" placeholder="Enter Your State" required="required"><br>
+                	
                 	<input type="text" class="form-control" id="" name="country" placeholder="Enter Your Country" required="required"><br>
                 	<input type="text" class="form-control" id="" name="phone" placeholder="Enter Your Phone" required="required"><br>
                 	<input type="email" class="form-control" id="" name="emailAddress" placeholder="Enter Your EmailID" required="required"><br>   
-                	<input type="text" class="form-control" id="" name="zip" placeholder="Enter Your Zip" required="required"><br>        	
+                	<input type="text" class="form-control" id="" name="zip" placeholder="Enter Your Zip" required="required"><br>
+                	<input type="text" class="form-control" id="" name="password" placeholder="Enter Your Password" required="required"><br>        	
                 </div>
                 	<input type="submit" class="form-control" value="click">
                 </div>                	

@@ -13,8 +13,8 @@ public class LoginDao {
 	    boolean status = false;	
 	    con = GetConnection.getConnection();
 	    try 
-	    {	    	
-		    String sql = "insert into user_login_tbl(user_id, user_pass, id)values(?, ?, ?)";
+	    {    	
+		    String sql = "insert into user_login_tbl(user_id, user_pass,partyID)values(?, ?, ?)";
 		    PreparedStatement ps = con.prepareStatement(sql);
 	        ps.setString(1,login.getUserEmail());
 	        ps.setString(2,login.getPassword());
