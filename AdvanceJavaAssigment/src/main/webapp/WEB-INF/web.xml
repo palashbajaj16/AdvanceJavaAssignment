@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>AdvanceJavaAssigment</display-name>
+  <welcome-file-list>
+  	<welcome-file>index.html</welcome-file>
+  </welcome-file-list> 
+  
+  <servlet>
+  	<servlet-name>Part1Home</servlet-name>
+  	<jsp-file>/view/part1/part1home.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Part1Home</servlet-name>
+  	<url-pattern>/part1home</url-pattern>
+  </servlet-mapping> 
+  
+  <servlet>
+  	<servlet-name>Part1Task1</servlet-name>
+  	<jsp-file>/view/part1/task1demo.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Part1Task1</servlet-name>
+  	<url-pattern>/task1demo</url-pattern>
+  </servlet-mapping> 
+  
+  <servlet>
+  	<servlet-name>Part2Home</servlet-name>
+  	<jsp-file>/view/part2/part2home.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Part2Home</servlet-name>
+  	<url-pattern>/simple_registration</url-pattern>
+  </servlet-mapping> 
+  
+  <servlet>
+  	<servlet-name>Part2Success</servlet-name>
+  	<jsp-file>/view/part2/registrationsuccess.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Part2Success</servlet-name>
+  	<url-pattern>/registration_success</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>Display</servlet-name>
+  	<jsp-file>/view/part3/display.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Display</servlet-name>
+  	<url-pattern>/display</url-pattern>
+  </servlet-mapping> 
+  
+  <servlet>
+  	<servlet-name>Edit</servlet-name>
+  	<jsp-file>/view/part3/edit.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Edit</servlet-name>
+  	<url-pattern>/edit</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
+  	<servlet-name>Login</servlet-name>
+  	<jsp-file>/view/part3/login.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Login</servlet-name>
+  	<url-pattern>/login</url-pattern>
+  </servlet-mapping> 
+  
+  <servlet>
+  	<servlet-name>Registration</servlet-name>
+  	<jsp-file>/view/part3/registration.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Registration</servlet-name>
+  	<url-pattern>/registration</url-pattern>
+  </servlet-mapping>   
+  
+  <servlet>
+  	<servlet-name>Search</servlet-name>
+  	<jsp-file>/view/part3/search.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Search</servlet-name>
+  	<url-pattern>/search</url-pattern>
+  </servlet-mapping>  
+  
+  <!-- filters --> 
+  <filter>
+  	<filter-name>AuthAss</filter-name>
+  	<filter-class>com.advancejava.service.GetFilters</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>AuthAss</filter-name>
+  	<url-pattern>/search</url-pattern>
+  	<url-pattern>/display</url-pattern>
+  </filter-mapping>
+  
+</web-app>
+
+
+
+
+
+
+
